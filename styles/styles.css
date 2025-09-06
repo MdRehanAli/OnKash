@@ -1,2 +1,6 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+.outfit-font {
+    font-family: "Outfit", sans-serif;
+}
