@@ -1,4 +1,5 @@
 const validPin = 1234;
+const transactionData = [];
 
 // function to get input values Numbr
 function getInputValueNumber(id) {
@@ -12,7 +13,7 @@ function getInputValue(id) {
     return inputFieldValue;
 }
 
-// function to get input values Innertext
+// function to get input values Inner text
 function getInnerText(id) {
     const elementValueText = parseInt(document.getElementById(id).innerText);
     return elementValueText;
@@ -29,7 +30,6 @@ function toggle(id) {
     const forms = document.getElementsByClassName('form');
     for (const form of forms) {
         form.style.display = 'none';
-        console.log(form)
     }
     document.getElementById(id).style.display = "block";
 }
@@ -54,6 +54,10 @@ document.getElementById('add-money').addEventListener('click', function (event) 
     const bank = getInputValue('bank');
     const accountNumber = getInputValue('account-number');
     const amount = getInputValueNumber('amount');
+    if(amount <=0){
+        alert("Invalid Amount.")
+        return;
+    }
     const pin = getInputValueNumber('pin');
 
 
@@ -73,6 +77,13 @@ document.getElementById('add-money').addEventListener('click', function (event) 
     const totalAvailableBalance = amount + availableBalance;
 
     setInnerText(totalAvailableBalance);
+
+    const data = {
+        name: "Add Money",
+        date: new Date().toLocaleTimeString()
+    }
+
+    transactionData.push(data);
 })
 
 
@@ -82,6 +93,10 @@ document.getElementById('cash-out').addEventListener('click', function (event) {
     const amount = getInputValueNumber('withdraw-amount');
 
     const availableBalance = getInnerText('available-balance');
+    if(amount<=0 || availableBalance<amount){
+        alert("Invalid Amount")
+        return;
+    }
 
     const coPin = getInputValueNumber('co-pin');
     const agentNumber = getInputValue('agent-number');
@@ -98,9 +113,43 @@ document.getElementById('cash-out').addEventListener('click', function (event) {
 
     const withdrawAfterBalance = availableBalance - amount;
 
-    // getInnerText('available-balance') = withdrawAfterBalance;
     setInnerText(withdrawAfterBalance);
 
+    const data = {
+        name: "Cash Out",
+        date: new Date().toLocaleTimeString()
+    }
+
+    transactionData.push(data);
+
+})
+
+
+document.getElementById("transaction-button").addEventListener('click', function () {
+    const transactionContainer = document.getElementById("transaction-container");
+    transactionContainer.innerText = '';
+    for (const data of transactionData) {
+        const div = document.createElement("div");
+        div.innerHTML = `
+        <div class="mb-4">
+            <div class=" bg-white rounded-2xl p-3 flex justify-between items-center">
+                <div class="flex items-center gap-3 rounded-full">
+                    <div class=" p-3 rounded-full bg-[#F4F5F7]">
+                        <img src="./assets/wallet1.png" alt="">
+                    </div>
+                    <div>
+                        <h2 class="text-xl mb-1">${data.name}</h2>
+                        <p class="text-[#493c3c80] text-xs font-light">${data.date}</p>
+                    </div>
+                </div>
+                <div>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+            </div>
+        </div>
+        `
+        transactionContainer.appendChild(div)
+    }
 })
 
 

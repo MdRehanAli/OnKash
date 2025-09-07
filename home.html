@@ -24,7 +24,7 @@
 
 <body class="bg-[#F4F5F7] outfit-font">
     <!-- Header Section  -->
-    <header class="max-w-lg mx-auto p-3 border-b-1 border-gray-700 bg-white p-5">
+    <header class="max-w-lg mx-auto border-b-1 border-gray-700 bg-white p-5">
         <nav class="min-h-[50px] flex justify-between items-center">
             <div class="flex items-center gap-2">
                 <img src="./assets/Group.png" alt="Logo">
@@ -219,29 +219,19 @@
         <!-- Transactions Section -->
         <section id="transactions-section" class="form mt-8" style="display: none;">
             <div>
-                <h1 class="mb-4 font-semibold text-2xl">Transactions</h1>
-                <form action="" class="bg-white rounded-2xl p-8">
-                    <div class="">
-                        <label class="font-semibold" for="">Agent Number</label> <br>
-                        <input id="agent-number" type="text" placeholder="Enter 9 digit number"
-                            class="input bg-[#F4F5F7] mt-3 rounded-3xl w-full" />
-                    </div>
-                    <div class="mt-4">
-                        <label class="font-semibold" for="">Amount</label> <br>
-                        <input id="withdraw-amount" type="text" placeholder="Enter amount to withdraw"
-                            class="input bg-[#F4F5F7] mt-3 rounded-3xl w-full" />
-                    </div>
-                    <div class="mt-4">
-                        <label class="font-semibold" for="">Pin Number</label> <br>
-                        <input id="co-pin" type="text" placeholder="Enter 4 digit pin number"
-                            class="input bg-[#F4F5F7] mt-3 rounded-3xl w-full" />
-                    </div>
-                    <button id="cash-out" class="btn bg-[#0874F2] text-white mt-5 w-full rounded-3xl">Withdraw
-                        Money </button>
-                </form>
+                <div class="flex justify-between items-center">
+                    <h1 class="mb-4 font-semibold text-2xl">Transactions</h1>
+                    <p class="text-[#08080880]">View All</p>
+                </div>
+
+                <div id="transaction-container" class="mb-4">
+
+                </div>
             </div>
         </section>
     </main>
+
+
 
     <!-- JS linked  -->
     <script src="./scripts/home.js"></script>
