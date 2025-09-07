@@ -34,6 +34,16 @@ function toggle(id) {
     document.getElementById(id).style.display = "block";
 }
 
+function handleButtonStyle(id) {
+    const formButtons = document.getElementsByClassName('form-button');
+    for (const formButton of formButtons) {
+        formButton.classList.remove("border-[#0874f2]", "bg-[#0874f20d]");
+        formButton.classList.add("border-gray-300");
+    }
+    document.getElementById(id).classList.remove("border-gray-300");
+    document.getElementById(id).classList.add("border-[#0874f2]", "bg-[#0874f20d]");
+}
+
 
 
 // Add money button Features
@@ -95,31 +105,34 @@ document.getElementById('cash-out').addEventListener('click', function (event) {
 
 
 
-
-
-
-
-
 // toggling features 
 document.getElementById('add-money-button').addEventListener('click', function () {
     toggle("add-money-section");
+    handleButtonStyle("add-money-button");
 })
 
 document.getElementById('cash-out-button').addEventListener('click', function () {
     toggle('cash-out-section');
+    handleButtonStyle("cash-out-button");
 })
 
 document.getElementById('transfer-button').addEventListener('click', function () {
     toggle('transfer-money-section');
+    handleButtonStyle("transfer-button");
 })
 
 document.getElementById('get-bonus-button').addEventListener('click', function () {
     toggle('get-bonus-section');
+    handleButtonStyle("get-bonus-button");
 })
+
 document.getElementById('pay-bill-button').addEventListener('click', function () {
     toggle('pay-bill-section');
+    handleButtonStyle("pay-bill-button");
 })
+
 document.getElementById('transaction-button').addEventListener('click', function () {
     toggle('transactions-section');
+    handleButtonStyle("transaction-button");
 })
 
