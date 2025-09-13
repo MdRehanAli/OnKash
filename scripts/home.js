@@ -1,7 +1,7 @@
 const validPin = 1234;
 const transactionData = [];
 
-// function to get input values Numbr
+// function to get input values Number
 function getInputValueNumber(id) {
     const inputFieldValueNumber = parseInt(document.getElementById(id).value);
     return inputFieldValueNumber;
@@ -54,7 +54,7 @@ document.getElementById('add-money').addEventListener('click', function (event) 
     const bank = getInputValue('bank');
     const accountNumber = getInputValue('account-number');
     const amount = getInputValueNumber('amount');
-    if(amount <=0){
+    if (amount <= 0) {
         alert("Invalid Amount.")
         return;
     }
@@ -74,16 +74,20 @@ document.getElementById('add-money').addEventListener('click', function (event) 
         return;
     }
 
+
     const totalAvailableBalance = amount + availableBalance;
 
     setInnerText(totalAvailableBalance);
+
 
     const data = {
         name: "Add Money",
         date: new Date().toLocaleTimeString()
     }
 
+    alert(`Added ${money} money`);
     transactionData.push(data);
+
 })
 
 
@@ -93,7 +97,7 @@ document.getElementById('cash-out').addEventListener('click', function (event) {
     const amount = getInputValueNumber('withdraw-amount');
 
     const availableBalance = getInnerText('available-balance');
-    if(amount<=0 || availableBalance<amount){
+    if (amount <= 0 || availableBalance < amount) {
         alert("Invalid Amount")
         return;
     }
@@ -148,7 +152,7 @@ document.getElementById("transaction-button").addEventListener('click', function
             </div>
         </div>
         `
-        transactionContainer.appendChild(div)
+        transactionContainer.appendChild(div);
     }
 })
 

@@ -1,6 +1,6 @@
 // Login button functionality
 
-document.getElementById('login').addEventListener('click', function(event){
+document.getElementById('login').addEventListener('click', function (event) {
     event.preventDefault();
     const mobileNumber = 123456789;
     const pinNumber = 1234;
@@ -11,10 +11,10 @@ document.getElementById('login').addEventListener('click', function(event){
     const mobileNumberValueInt = parseInt(mobileNumberValue);
     const pinNumberValueInt = parseInt(pinNumberValue);
 
-    if(mobileNumber === mobileNumberValueInt && pinNumber === pinNumberValueInt){
+    if (mobileNumber === mobileNumberValueInt && pinNumber === pinNumberValueInt) {
         window.location.href = "./home.html"
     }
-    else{
+    else {
         alert("Invalid! For Mobile use: 123456789 & for pin use: 1234");
     }
 })
